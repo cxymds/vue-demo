@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" v-model="firstName">
+			<input type="text" v-model="lastName">
+			{{firstName}}{{lastName}}
+		</div>
+	</body>
+	<script>
+		let app = new Vue({
+			el:"#app",
+			data:{
+				firstName:'',
+				lastName:''
+			},
+			computed:{
+				// name:function(){
+				// 	console.log(1)
+				// 	return this.firstName + this.lastName;
+				// }
+			},
+			methods:{
+				name(){
+					console.log(1)
+					return this.firstName + this.lastName;
+				}
+			},
+			watch:{
+				firstName:(new_value,old_value)=>{
+					
+				}
+			}
+		});
+		
+		
+	</script>
+</html>

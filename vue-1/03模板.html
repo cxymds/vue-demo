@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h1>{{title}}</h1>
+			<img :src="url" alt="" >
+			<div  v-text="htmlstr"></div>
+		</div>
+	</body>
+	<script>
+		let app = new Vue({
+			el:"#app",
+			data:{
+				title:"这是我的第一个vue页面",
+				url:"model.jpg",
+				htmlstr:`<p style="color:red"> 这是个段落 </p>`,
+			}
+		});
+	</script>
+</html>

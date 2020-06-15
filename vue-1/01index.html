@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="./vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h1>{{title}}</h1>
+			{{message}}
+			<!-- <img src="http://t7.baidu.com/it/u=3616242789,1098670747&fm=79&app=86&f=JPEG?w=900&h=1350" v-bind:title="message"> -->
+			
+			<ul>
+				<li v-if="login">个人设置</li>
+				<li v-else="login">登录</li>
+			</ul>
+			
+			<ul>
+				<li v-for="todo in toList">{{todo.name}} ----- {{todo.age}}</li>
+			</ul>
+			
+			<input type="text" v-model:value="number">
+			{{number}}
+			
+			
+			<button @click="al">点击</button>
+		</div>
+	</body>
+	<script type="text/javascript">
+		let app = new Vue({
+			el: "#app",    //element   挂载节点
+			data:{
+				message:'hello world!',
+				title:"first  page",
+				login:false,
+				toList:[
+					{name:"zhangsan",age:18},
+					{name:"liuliu",age:68},
+					{name:"xiaowu",age:22},
+					{name:"bage",age:31},
+				],
+				number:12,
+			},
+			methods:{
+				al(){
+					alert(1);
+				}
+			}
+		});
+		
+		console.log(app.message)
+	</script>
+</html>
