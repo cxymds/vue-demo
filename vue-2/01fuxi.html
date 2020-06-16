@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{message}}
+			<h1 :title="title">asdjkbsajkb</h1>
+			<span :class="bclass">absdbs</span>
+			<span :style="bindStyle"></span>
+			<button @click="clk">点击</button>
+			<input type="text" v-model="number">
+			<br>
+			金额：{{total}}
+		</div>
+	</body>
+	<script>
+		let app = new Vue({
+			el:"#app",
+			data:{
+				message:"first page!",
+				title:"标题提示信息",
+				price:12.4,
+				number:0,
+				bclass:{
+					bgColor:true,
+					fontStyle: true,
+					colorRed:false
+				},
+				bindStyle:{
+					backgroundColor:'red',
+					fontSize:"12px",
+					color:"blue"
+				}
+			},
+			methods:{
+				clk(){
+					alert('点我了')
+				}
+			},
+			computed:{
+				total:function(){
+					return this.price*this.number
+				}
+			},
+			watch:{
+				number:function(new_value,old_value){
+					console.log(new_value)
+					console.log(old_value)
+				}
+			}
+		});
+	</script>
+</html>
