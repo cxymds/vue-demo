@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<my-component v-slot="{users}">
+				
+					<div>
+						1111
+						{{users.name}}
+					</div>
+			</my-component>
+			
+		</div>
+	</body>
+	<script>
+		//注册组件  全局组件
+		Vue.component('myComponent',{
+			template:`
+			<div>
+				<h1>这是标题</h1>
+				<slot v-bind:users="user">{{user.name}}</slot>	
+			</div>
+			`,  //组件模板必须只能有一个根
+			data:function(){
+				return {
+					user:{
+						name:"wangmazi",
+					}
+				};
+			},
+			methods:{
+				
+			},
+			props:[]
+		})
+		
+		let app = new Vue({
+			el:"#app",   //根组件
+			comments:[],  //局部组件
+			data:{
+				
+			}
+		})
+	</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{message}}
+			<input type="text" v-model="message">
+			<my-component v-model="message" v-bind:msg="message"></my-component>
+		</div>
+		
+		
+		<div id="msg">
+			<my-component></my-component>
+		</div>
+	</body>
+	<script>
+		//注册组件  全局组件
+		Vue.component('myComponent',{
+			template:`
+			<div>
+				<input type="text" v-bind:value="msg" v-on:input="$emit('input',$event.target.value)">
+				{{msg}}
+			</div>
+			`,  //组件模板必须只能有一个根
+			data:function(){
+				return {
+				};
+			},
+			props:['msg']
+		})
+		
+		let app = new Vue({
+			el:"#app",   //根组件
+			comments:[],  //局部组件
+			data:{
+				message:"hello child"
+			},
+			methods:{
+				
+			}
+		})
+		
+		
+		let msg = new Vue({
+			el:"#msg"
+		})
+	</script>
+</html>

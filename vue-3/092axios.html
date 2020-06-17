@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<style>
+			span{
+				margin-right:100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<user v-for="u in userlist" v-bind:user="u"></user>
+		</div>
+		<script>
+			let  user = {
+				template:`
+				<div> 用户名<span>{{user.name}}</span>   年龄<span>{{user.age}}</span>   描述<span>{{user.desc}}</span> </div>	
+				`,
+				props:['user'],
+			}
+			
+			let app = new Vue({
+				data:{
+					userlist:[],
+				},
+				methods:{
+					
+				},
+				created:function(){
+					axios.get('http://127.0.0.1:3000/users').then(({data})=>{
+						this.userlist = data;
+					}).catch((error)=>{
+						console.log(error)
+					})
+				},
+				components:{
+					user,
+				}
+			}).$mount('#app')
+		</script>
+	</body>
+</html>
+
+

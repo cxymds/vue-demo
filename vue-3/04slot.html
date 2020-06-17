@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<my-component>
+				<div>
+					<a href="#">baidu</a>
+					<ul>
+						<li><a href="">111</a></li>
+						<li><a href="">222</a></li>
+						<li><a href="">333</a></li>
+					</ul>
+				</div>
+			</my-component>
+			
+		</div>
+	</body>
+	<script>
+		//注册组件  全局组件
+		Vue.component('myComponent',{
+			template:`
+			<div>
+				<h1>这是标题</h1>
+				<slot>abc</slot>	
+			</div>
+			`,  //组件模板必须只能有一个根
+			data:function(){
+				return {
+					
+				};
+			},
+			methods:{
+				
+			},
+			props:['ls']
+		})
+		
+		let app = new Vue({
+			el:"#app",   //根组件
+			comments:[],  //局部组件
+			data:{
+				
+			}
+		})
+	</script>
+</html>

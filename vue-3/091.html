@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.item{
+				height: 300px;
+				background-color: aquamarine;
+			}
+			
+			.fade-enter-active, .fade-leave-active {
+			  transition: opacity 2s;
+			}
+			.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+			  opacity: 0;
+			}
+		</style>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<transition name="fade">
+				<div class="item" v-if="show">动画内容</div>
+			</transition>
+			<button @click="show=!show">点击</button>
+		</div>
+	</body>
+	<script>
+		let app = new Vue({
+			el:"#app",   //根组件
+			comments:[],  //局部组件
+			data:{
+				show:true,
+			}
+		})
+	</script>
+</html>
